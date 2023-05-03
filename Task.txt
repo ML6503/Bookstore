@@ -1,0 +1,30 @@
+C#, ASP.NET Core
+Task: Write a web application – bookstore and use any UI styles.
+Description:
+A book is an object with the following parameters:
+1. ID
+2. Author
+3. Name
+4. Year of publication
+5. Status (Available, Purchased)
+Data Access Layer
+1. MS SQL, SQLite or any database
+2. Get data from the database via API
+3. Read/write from the local file as a database alternative.
+UI:
+1. Web application on ASP.NET
+2. The page displays a list of books and can sort that list by any of the book parameters.
+3. The button “Buy” removes one of the selected books from the page and update status
+to “Purchased”
+4. The button “Add” must display a form with the above book parameters and add the
+book to the database with the next ID number and status “Available”.
+
+Notes:
+ If the data is taken from the file: send the file with the list of books.
+ If the data is taken from the database: send a backup or database deployment script.
+ Pay attention to database security when adding a new book.
+ Application must compile without installing or configuring additional components etc
+ Source code must be accomplished with the comments.
+ Archive with the test task result must contain readme.txt file with instructions.
+ Deployment to any webserver and presenting during 2 nd interview is an advantage.
+ Any additional functionality with the books list is an advantage.
