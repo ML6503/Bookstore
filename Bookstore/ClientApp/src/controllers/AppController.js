@@ -1,24 +1,27 @@
-import { BookController } from './BookController';
+import { BookController } from "./BookController";
 
 export class AppController {
-     
-    constructor() {
-        this.bookController = new BookController();
-    }
+  constructor() {
+    this.bookController = new BookController();
+  }
 
-    async getBook(id) {
-        return await this.bookController.getMovie(id);
-    }
+  async getBook(id) {
+    return await this.bookController.getOneBook(id);
+  }
 
-    async getAllBooks() {
-        return await this.bookController.getAllBooks();
-    }
-    
-    async buyBook(id) {
-        return await this.bookController.buyBook(id);
-    }
-    
-    async addBook(id) {
-        return await this.bookController.buyBook(id);
-    }
+  async getAllBooks() {
+    return await this.bookController.getAllBooks();
+  }
+
+  async buyBook(id) {
+    return await this.bookController.buyBook(id);
+  }
+
+  async addBook(id) {
+    return await this.bookController.addBook(id);
+  }
+
+  async deleteBook(id) {
+    return await this.bookController.deleteBook(id);
+  }
 }
