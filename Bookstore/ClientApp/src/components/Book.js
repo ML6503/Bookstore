@@ -24,7 +24,8 @@ export const Book = ({ book, refreshBooks, appController }) => {
                     className="card"
                     style={{
                         maxWidth: `15rem`,
-                        minWidth: `12rem`
+                        minWidth: `12rem`,
+                        height: `29rem`,
                         // minHeight: "15rem",
                         // maxHeight: "15rem",
                         // height: "15rem"

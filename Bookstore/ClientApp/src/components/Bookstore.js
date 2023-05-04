@@ -1,72 +1,46 @@
 ﻿import { useEffect, useState } from 'react';
-import { Book } from "./Book";
-
-const Filter = ({  toSortBy  }) => {
-    
-    return (
-        <>
-            <h6 className="text-primary">Sort books by:</h6>
-            <div className="btn-group" role="group" aria-label="outlined design books filters">
-                <button type="button" onClick={toSortBy} className="btn btn-outline-primary">title</button>
-                <button type="button" onClick={toSortBy} className="btn btn-outline-primary" >year</button>
-                <button type="button" onClick={toSortBy}  className="btn btn-outline-primary">price</button>
-            </div>
-        </>
-        );
-};
-
-const BooksList = ({ books, refreshBooks, appController }) => {
-    return books && (
-        <div
-            className="container-fluid d-flex justify-content-around align-items-start flex-wrap pt-5"
-            style={{ height: "100vh" }}
-        >
-
-            {books.map((book) => {
-
-                return (
-                    <Book
-                        key={book.id}
-                        book={book}
-                        refreshBooks={refreshBooks}
-                        appController={appController} 
-                    />
-                )
-            })}
-        </div>
-    );
-};
+import { Filter } from "./Filter";
+import { BooksList } from "./BooksList";
 
 export const Bookstore = ({ appController }) => {
     const [books, setBooks] = useState([]);
     const [sortedBooks, setSortedBooks] = useState(books);
 
+    // to load books from db and sort for availabilty
+    // we load all since purchased will be needed further for admin panel TODO
+    const refreshBooks = async () => {
+        const AVAILABLE = "Available";
+
+        let newBooks = await appController.getAllBooks();
+        let availableBooks = newBooks.filter((book) => book.status === AVAILABLE);
+        setBooks(availableBooks);
+    };
+
+    // to initially load Books list element by  1st page render  or refresh for navigation 
     useEffect(() => {
         refreshBooks();
     }, []);
 
+    // to renew Books list element by  books props
     useEffect(() => {
         
         setBooks(initialBooks => sortedBooks !== initialBooks ? sortedBooks : initialBooks);
     }, [sortedBooks]);
 
+    // func to cort books by any params choosen on click
+    //api request goes to server
     const toSortBy = async (e) => {
         e.preventDefault();
         console.log('sort event ', e.currentTarget.textContent);
         const sortedValue = e.currentTarget.textContent;
+        // as option sorting can be done at client if shop is not big to save connection to server and db
         // const sortedBooks = books.sort((item1, item2) => item1.name.localeCompare(item2.name));
         const sortedBooks = await appController.getSortedBooks(sortedValue);
         setSortedBooks(sortedBooks);
       
     };
 
-    const refreshBooks = async () => {
-        const AVAILABLE = "Available";
-
-        let newBooks = await appController.getAllBooks();
-        let availableBooks = newBooks.filter((book) => book.status === AVAILABLE);       
-        setBooks(availableBooks);
-    };
+   
  
     return books.length !== null ? (
         <div className="container-fluid d-flex flex-column   align-items-start">
