@@ -3,10 +3,11 @@ import { ApiConfig } from "../api/ApiConfig";
 export class BookApiModel extends ApiConfig {
   async getAllBooks() {
     //const resp = await fetch("api/books");
-    const resp = await this.host.get("api/books");
-    const books = await resp.json().catch((err) => console.error("Error", err));
-
-    return books;
+      const { data } = await this.host.get("api/books");
+      console.log('resp axios get from BookApiModel: ', data);
+    //const books = await resp.json().catch((err) => console.error("Error", err));
+    //  console.log('books from BookApiModel: ', books);
+    return data;
   }
 
   async getOneBook(id) {
@@ -16,8 +17,8 @@ export class BookApiModel extends ApiConfig {
     return book;
   }
 
-  async addBook(id) {
-    const resp = await this.host.post(`api/books/${id}`, newBook);
+  async addBook(newBook) {
+    const resp = await this.host.post(`api/books`, newBook);
     const book = await resp.json().catch((err) => console.error("Error", err));
     await this.getAllBooks();
     return book;

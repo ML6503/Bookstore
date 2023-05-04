@@ -1,20 +1,19 @@
 import axios from "axios";
 
+
 export class ApiConfig {
   constructor() {
-    this.url =
-      process.env.REACT_APP_API_URL || env.ASPNETCORE_HTTPS_PORT
-        ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}`
-        : env.ASPNETCORE_URLS
-        ? env.ASPNETCORE_URLS.split(";")[0]
-        : "http://localhost:34724";
+    this.URL =
+        process.env.REACT_APP_API_URL ? process.env.REACT_APP_API_URL 
+        : "https://localhost:7097/";
+           // : "http://localhost:44492";
 
     this.host = axios.create({
-      baseURL: this.url,
+      baseURL: this.URL,
     });
 
     this.authHost = axios.create({
-      baseURL: this.url,
+      baseURL: this.URL,
     });
 
     const authInterceptor = (config) => {
@@ -25,10 +24,10 @@ export class ApiConfig {
     this.authHost.interceptors.request.use(authInterceptor);
   }
 
-  get host() {
+  getHost() {
     return this.host;
   }
-  get authHost() {
+  getAuthHost() {
     return this.authHost;
   }
 }

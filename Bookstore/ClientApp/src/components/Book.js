@@ -1,0 +1,78 @@
+﻿// import "./styles.css";
+
+export const Book = ({ book, refreshBooks, appController }) => {
+    const toBuyBook = async (e) => {
+        console.log("we are in buy book");
+        e.preventDefault();
+        await appController.buyBook(book.id);
+        await refreshBooks();
+    };
+    console.log('book', book);
+    return (
+        //<div className="container d-flex justify-content-around align-items-center">
+            <section
+                className="p-3"
+            // style={{
+            //   width: `60vw`,
+            //   minWidth: `50vw`
+            //   // minHeight: "15rem",
+            //   // maxHeight: "15rem",
+            //   // height: "15rem"
+            // }}
+            >
+                <div
+                    className="card"
+                    style={{
+                        maxWidth: `20rem`,
+                        minWidth: `15rem`
+                        // minHeight: "15rem",
+                        // maxHeight: "15rem",
+                        // height: "15rem"
+                    }}
+                >
+                    <div className="card-body d-flex flex-row ">
+                        <div>
+                            <h3 className="card-title font-weight-bold mb-2">
+                                Book title: {book.name}
+                            </h3>
+                            <p className="card-text">
+                                publication year: {book.publicationYear}
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        className="bg-image hover-overlay ripple rounded-0"
+                        data-mdb-ripple-color="light"
+                    >
+                        <img
+                            className="img-fluid"
+                            // src="https://mdbootstrap.com/img/Photos/Horizontal/Food/full page/2.jpg"
+                            src="./book-img.jpg"
+                            alt="Card  cap"
+                        />
+
+                        {/* <a href="#!">
+              <div
+                className="mask"
+                style={{ backgroundColor: ` rgba(251, 251, 251, 0.15)` }}
+              ></div>
+            </a> */}
+                    </div>
+                    <div className="card-body">
+                        <h4 className="card-title font-weight-bold ">{book.price}$</h4>
+                        <p style={{ fontSize: "1.2 rem" }}>
+                            {book.Description
+                                ? book.Description
+                                : "This nice book hasn't got any description yet"}
+                        </p>
+                        <div>
+                            <button onClick={toBuyBook} className="btn btn-primary px-4 ">
+                                BUY
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        //</div>
+    );
+};

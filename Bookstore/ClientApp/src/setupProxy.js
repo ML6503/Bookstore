@@ -13,7 +13,7 @@ const context = [
   "/.well-known",
   "/Identity",
   "/connect",
-  //"/ApplyDatabaseMigrations",
+  "/ApplyDatabaseMigrations",
   "/_framework",
   "/swagger",
   "api/books",
@@ -25,7 +25,8 @@ module.exports = function (app) {
     secure: false,
     headers: {
       Connection: "Keep-Alive",
-    },
+      },
+     
   });
 
   app.use(appProxy);

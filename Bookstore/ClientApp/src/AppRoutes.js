@@ -2,21 +2,25 @@ import ApiAuthorzationRoutes from './components/api-authorization/ApiAuthorizati
 import { Bookstore } from './components/Bookstore';
 import { Counter } from "./components/Counter";
 import { FetchData } from "./components/FetchData";
-import { Home } from "./components/Home";
+// import { Home } from "./components/Home";
 
 const AppRoutes = [
-  {
+  //{
+  //  index: true,
+  //  element: <Home />
+    //},{
+    {
     index: true,
-    element: <Home />
-  },
+    element: <Bookstore />
+    },
   {
     path: '/counter',
     element: <Counter />
     },
-    {
-        path: '/bookstore',
-        element: <Bookstore />
-    },
+    //{
+    //    path: '/bookstore',
+    //    element: <Bookstore />
+    //},
   {
     path: '/fetch-data',
     requireAuth: true,
