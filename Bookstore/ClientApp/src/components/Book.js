@@ -9,7 +9,7 @@ export const Book = ({ book, refreshBooks, appController }) => {
     };
     console.log('book', book);
     return (
-        //<div className="container d-flex justify-content-around align-items-center">
+
             <section
                 className="p-3"
             // style={{
@@ -23,8 +23,8 @@ export const Book = ({ book, refreshBooks, appController }) => {
                 <div
                     className="card"
                     style={{
-                        maxWidth: `20rem`,
-                        minWidth: `15rem`
+                        maxWidth: `15rem`,
+                        minWidth: `12rem`
                         // minHeight: "15rem",
                         // maxHeight: "15rem",
                         // height: "15rem"
@@ -32,9 +32,9 @@ export const Book = ({ book, refreshBooks, appController }) => {
                 >
                     <div className="card-body d-flex flex-row ">
                         <div>
-                            <h3 className="card-title font-weight-bold mb-2">
-                                Book title: {book.name}
-                            </h3>
+                            <h4 className="card-title font-weight-bold mb-2">
+                                {book.name}
+                            </h4>
                             <p className="card-text">
                                 publication year: {book.publicationYear}
                             </p>
@@ -45,10 +45,9 @@ export const Book = ({ book, refreshBooks, appController }) => {
                         data-mdb-ripple-color="light"
                     >
                         <img
-                            className="img-fluid"
-                            // src="https://mdbootstrap.com/img/Photos/Horizontal/Food/full page/2.jpg"
+                            className="img-fluid"                        
                             src="./book-img.jpg"
-                            alt="Card  cap"
+                            alt="Adventure fantasy book picture"
                         />
 
                         {/* <a href="#!">
@@ -59,7 +58,7 @@ export const Book = ({ book, refreshBooks, appController }) => {
             </a> */}
                     </div>
                     <div className="card-body">
-                        <h4 className="card-title font-weight-bold ">{book.price}$</h4>
+                        <h5 className="card-title font-weight-bold ">{book.price}$</h5>
                         <p style={{ fontSize: "1.2 rem" }}>
                             {book.Description
                                 ? book.Description
@@ -73,6 +72,6 @@ export const Book = ({ book, refreshBooks, appController }) => {
                     </div>
                 </div>
             </section>
-        //</div>
+
     );
 };
