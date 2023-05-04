@@ -14,6 +14,10 @@ export class AppController {
     return await this.bookController.getAllBooks();
   }
 
+    async getSortedBooks(sortBy, order) {
+        return await this.bookController.getSortedBooks(sortBy, order);
+    }
+
   async buyBook(id) {
     return await this.bookController.buyBook(id);
   }

@@ -27,6 +27,21 @@ namespace Bookstore.Controllers
 
         }
 
+        // GET api/<BooksCotroller>/sort?sortBy="sortType"&order="asc" | "desc"
+        [HttpGet("sort")]
+        // public ActionResult<List<BookModel>> GetBooks()
+        public async Task<ActionResult<List<BookModel>>> GetSortedBooks([FromQuery] string sortBy, string order )
+        {
+            if (!sortBy.Any())
+            {
+                return NotFound("sort query not found");
+            }
+            var books = await _bookServices.GetSortedBooks(sortBy, order);
+            return books;
+
+        }
+
+
         // GET api/<BooksCotroller>/{id}
         [HttpGet("{id}")]
         // public ActionResult<BookModel> GetBook(string id)

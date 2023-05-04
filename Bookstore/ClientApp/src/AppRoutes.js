@@ -17,10 +17,7 @@ const AppRoutes = [
     path: '/counter',
     element: <Counter />
     },
-    //{
-    //    path: '/bookstore',
-    //    element: <Bookstore />
-    //},
+
   {
     path: '/fetch-data',
     requireAuth: true,

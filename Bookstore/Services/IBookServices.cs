@@ -10,6 +10,7 @@ namespace Bookstore.Services
         Task AddBook(BookModel book);
         Task DeleteBook(string id);
         Task UpdateBook(string id,BookModel book);
+        Task<List<BookModel>> GetSortedBooks(string sortBy, string order);
 
     }
 }

@@ -2,12 +2,12 @@
 
 export const Book = ({ book, refreshBooks, appController }) => {
     const toBuyBook = async (e) => {
-        console.log("we are in buy book");
+ 
         e.preventDefault();
         await appController.buyBook(book.id);
         await refreshBooks();
     };
-    console.log('book', book);
+
     return (
 
             <section
@@ -36,7 +36,7 @@ export const Book = ({ book, refreshBooks, appController }) => {
                                 {book.name}
                             </h4>
                             <p className="card-text">
-                                publication year: {book.publicationYear}
+                                by: {book.author}
                             </p>
                         </div>
                     </div>
@@ -58,7 +58,10 @@ export const Book = ({ book, refreshBooks, appController }) => {
             </a> */}
                     </div>
                     <div className="card-body">
-                        <h5 className="card-title font-weight-bold ">{book.price}$</h5>
+                    <h5 className="card-title font-weight-bold ">{book.price}$</h5>
+                    <p className="card-text">
+                        publication year: {book.publicationYear}
+                    </p>
                         <p style={{ fontSize: "1.2 rem" }}>
                             {book.Description
                                 ? book.Description

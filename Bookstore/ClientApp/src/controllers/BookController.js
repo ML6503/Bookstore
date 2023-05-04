@@ -5,5 +5,10 @@ export class BookController extends BookApiModel {
     const existedBook = await this.getOneBook(id);
     const purchasedBook = { ...existedBook, status: "Purchased" };
     await this.updateBook(id, purchasedBook);
-  }
+    }
+
+    async getSortedBooks(sortBy, order = "asc") {     
+
+        return await this.getAllSortedBooks(sortBy, order)
+    }
 }

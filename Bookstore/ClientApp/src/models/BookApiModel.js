@@ -5,7 +5,13 @@ export class BookApiModel extends ApiConfig {
     //const resp = await fetch("api/books");
     const { data } = await this.host.get("api/books");   
     return data;
-  }
+    }
+
+    async getAllSortedBooks(sortBy, order) {
+        //const resp = await fetch("api/books");
+        const { data } = await this.host.get(`api/books/sort?sortBy=${sortBy}&order=${order}`);
+        return data;
+    }
 
   async getOneBook(id) {
       const { data } = await this.host.get(`api/books/${id}`);
