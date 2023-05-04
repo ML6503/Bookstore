@@ -8,7 +8,7 @@ export const AddBook = () => {
         author: "",
         publicationYear: "",
         price: "",
-        status: "",
+        status: true,
     };
 
     function reducer(state, action) {
@@ -21,22 +21,22 @@ export const AddBook = () => {
             case "setAuthor":
                 return {
                     ...state,
-                    date: action.value,
+                   author: action.value,
                 };
             case "setPublicationYear":
                 return {
                     ...state,
-                    time: action.value,
+                    publicationYear: action.value,
                 };
             case "setPrice":
                 return {
                     ...state,
-                    name: action.value,
+                    price: action.value,
                 };
             case "setStatus":
                 return {
                     ...state,
-                    name: action.value,
+                    status: !state.status,
                 };
             case "reset":
                 return initialValue;
@@ -49,9 +49,9 @@ export const AddBook = () => {
         <div className="p-5">
             <form method="post"
                 onSubmit={(event) => {
-                    console.log("Submitted!");
+                    console.log("Submitted! with details: ", state);
                     event.preventDefault();
-                   
+                    dispatch({ type: "reset" });
                 }}
             >
             {/*-- Book name  input --*/}
@@ -64,6 +64,7 @@ export const AddBook = () => {
                          dispatch({ type: "setName", value: event.target.value });
                         }}
                         placeholder="Enter book name"
+                        value={state.name}
                         required />
                
             </div>
@@ -78,6 +79,7 @@ export const AddBook = () => {
                             event.stopPropagation();
                             dispatch({ type: "setAuthor", value: event.target.value });
                         }}
+                        value={state.author}
                         required />
                     
             </div>
@@ -85,7 +87,7 @@ export const AddBook = () => {
             {/*-- Book Publishing Year input --*/}
                 <div className="form-outline mb-4">
                     <label className="form-label" htmlFor="bookYear" >Book Publication Year</label>
-                    <input type="text" id="bookYear" className="form-control"
+                    <input type="number" min="1800" max="2099" step="1" id="bookYear" className="form-control"
                         placeholder="Enter year of publication"
                         name="publicationYear"
                         onChange={(event) => {
@@ -93,14 +95,15 @@ export const AddBook = () => {
                             event.stopPropagation();
                             dispatch({ type: "setPublicationYear", value: event.target.value });
                         }}
+                        value={state.publicationYear}
                         required  />
                     
             </div>
 
-            {/*-- Book Publishing Year input --*/}
+            {/*-- Book price input --*/}
                 <div className="form-outline mb-4">
                     <label className="form-label" htmlFor="bookPrice"  >Book Price</label>
-                    <input type="text" id="bookPrice" className="form-control"
+                    <input type="number" min="0.00" max="10000.00" step="any" id="bookPrice" className="form-control"
                         name="price"
                         onChange={(event) => {
                             event.preventDefault();
@@ -108,6 +111,7 @@ export const AddBook = () => {
                             dispatch({ type: "setPrice", value: event.target.value });
                         }}
                         placeholder="Enter price in USD"
+                        value={ state.price}
                         required />
                
             </div>
@@ -124,7 +128,7 @@ export const AddBook = () => {
                                     event.stopPropagation();
                                     dispatch({ type: "setStatus", value: event.target.value });
                                 }}
-                                checked />
+                                checked={ state.status} />
                         <label className="form-check-label" htmlFor="availableCheck"> Available </label>
                     </div>
                 </div>
