@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 // import AppRoutes from './AppRoutes';
 import AuthorizeRoute from './components/api-authorization/AuthorizeRoute';
@@ -6,7 +6,7 @@ import { Layout } from './components/Layout';
 import './custom.css';
 import ApiAuthorzationRoutes from './components/api-authorization/ApiAuthorizationRoutes';
 import { Bookstore } from './components/Bookstore';
-import { Counter } from "./components/Counter";
+import { AddBook } from "./components/AddBook";
 import { FetchData } from "./components/FetchData";
 
 const App = ({ appController }) => {
@@ -19,14 +19,14 @@ const App = ({ appController }) => {
             index: true,
             element: <Bookstore appController={appController} />
         },
-        {
-            path: '/counter',
-            element: <Counter />
-        },
         //{
-        //    path: '/bookstore',
-        //    element: <Bookstore />
+        //    path: '/counter',
+        //    element: <Counter />
         //},
+        {
+            path: '/addBook',
+           element: <AddBook />
+        },
         {
             path: '/fetch-data',
             requireAuth: true,
@@ -36,7 +36,7 @@ const App = ({ appController }) => {
     ];
 
     return (
-      <Layout>
+        <Layout appController={appController}>
         <Routes>
                 {AppRoutes.map((route, index) => {
                     const { element, requireAuth, ...rest } = route;

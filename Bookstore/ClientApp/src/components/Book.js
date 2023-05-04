@@ -10,16 +10,7 @@ export const Book = ({ book, refreshBooks, appController }) => {
 
     return (
 
-            <section
-                className="p-3"
-            // style={{
-            //   width: `60vw`,
-            //   minWidth: `50vw`
-            //   // minHeight: "15rem",
-            //   // maxHeight: "15rem",
-            //   // height: "15rem"
-            // }}
-            >
+            <section className="p-3" >
                 <div
                     className="card"
                     style={{

@@ -40,8 +40,7 @@ export const Bookstore = ({ appController }) => {
       
     };
 
-   
- 
+    
     return books.length !== null ? (
         <div className="container-fluid d-flex flex-column   align-items-start">
             <Filter toSortBy={ toSortBy } /> 
