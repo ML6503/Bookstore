@@ -1,7 +1,9 @@
 ﻿
 import React, { useReducer } from "react";
+import { useNavigate } from 'react-router-dom';
 
-export const AddBook = ({ appController  }) => {
+export const AddBook = ({ appController }) => {
+    const navigate = useNavigate();
 
     const initialValue = {
         name: "",
@@ -49,10 +51,11 @@ export const AddBook = ({ appController  }) => {
         <div className="p-5">
             <form method="post"
                 onSubmit={(event) => {
-                    console.log("Submitted! with details: ", state);
+                    event.preventDefault();                    
                     appController.addBook(state);
-                    event.preventDefault();
                     dispatch({ type: "reset" });
+                    navigate('/');            
+                    
                 }}
             >
             {/*-- Book name  input --*/}
