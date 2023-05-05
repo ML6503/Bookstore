@@ -27,11 +27,11 @@ const App = ({ appController }) => {
             path: '/addBook',
             element: <AddBook appController={appController} />
         },
-        {
-            path: '/fetch-data',
-            requireAuth: true,
-            element: <FetchData />
-        },
+        //{
+        //    path: '/fetch-data',
+        //    requireAuth: true,
+        //    element: <FetchData />
+        //},
         ...ApiAuthorzationRoutes
     ];
 
