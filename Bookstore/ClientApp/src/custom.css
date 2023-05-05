@@ -12,3 +12,22 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+.App {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+body {
+    background-color: #f5f7fa;
+    overflow-x: hidden;
+    font-size: 14px;
+}
+
+.fas.fa-heart:hover {
+    color: #f44336 !important;
+}
+
+.fas.fa-share-alt:hover {
+    color: #0d47a1 !important;
+}

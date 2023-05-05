@@ -26,8 +26,9 @@ namespace Bookstore.Models
 
         [BsonElement("price")]
         public double Price { get; set; }
-
-        //public string Username { get; set; } = null!;
+        
+        //[BsonElement("image")]
+        //public string Image { get; set; } = String.Empty;
     }
 
 

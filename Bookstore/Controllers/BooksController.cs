@@ -7,7 +7,7 @@ using Bookstore.Models;
 namespace Bookstore.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class BooksController : ControllerBase
     {
         private readonly BookServices _bookServices;
@@ -26,6 +26,21 @@ namespace Bookstore.Controllers
             return books;
 
         }
+
+        // GET api/<BooksCotroller>/sort?sortBy="sortType"&order="asc" | "desc"
+        [HttpGet("sort")]
+        // public ActionResult<List<BookModel>> GetBooks()
+        public async Task<ActionResult<List<BookModel>>> GetSortedBooks([FromQuery] string sortBy, string order )
+        {
+            if (!sortBy.Any())
+            {
+                return NotFound("sort query not found");
+            }
+            var books = await _bookServices.GetSortedBooks(sortBy, order);
+            return books;
+
+        }
+
 
         // GET api/<BooksCotroller>/{id}
         [HttpGet("{id}")]
