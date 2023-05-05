@@ -11,4 +11,14 @@ export class BookController extends BookApiModel {
 
         return await this.getAllSortedBooks(sortBy, order)
     }
+    async addNewBook(bookValue) {
+        const book = {
+            ...bookValue,
+            publicationYear: +bookValue.publicationYear,
+            price: +bookValue.price,
+            status: bookValue.status ? "Available" : "Purchased",
+        };
+
+        return await this.addBook(book);
+    }
 }

@@ -42,12 +42,13 @@ export const Book = ({ book, refreshBooks, appController }) => {
                             alt="Adventure fantasy book picture"
                         />
 
-                        {/* <a href="#!">
-              <div
-                className="mask"
-                style={{ backgroundColor: ` rgba(251, 251, 251, 0.15)` }}
-              ></div>
-            </a> */}
+                        <a href="#!">
+                            <div
+                                className="mask"
+                                style={{ backgroundColor: ` rgba(251, 251, 251, 0.15)` }}
+                            >
+                            </div>
+                        </a> 
                     </div>
                     <div className="card-body">
                     <h5 className="card-title font-weight-bold ">{book.price}$</h5>

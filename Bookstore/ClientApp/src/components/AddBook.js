@@ -1,7 +1,7 @@
 ﻿
 import React, { useReducer } from "react";
 
-export const AddBook = () => {
+export const AddBook = ({ appController  }) => {
 
     const initialValue = {
         name: "",
@@ -50,6 +50,7 @@ export const AddBook = () => {
             <form method="post"
                 onSubmit={(event) => {
                     console.log("Submitted! with details: ", state);
+                    appController.addBook(state);
                     event.preventDefault();
                     dispatch({ type: "reset" });
                 }}
@@ -128,7 +129,10 @@ export const AddBook = () => {
                                     event.stopPropagation();
                                     dispatch({ type: "setStatus", value: event.target.value });
                                 }}
-                                checked={ state.status} />
+                                   required
+                                // checked={state.status}
+                                checked
+                            />
                         <label className="form-check-label" htmlFor="availableCheck"> Available </label>
                     </div>
                 </div>

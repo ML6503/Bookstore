@@ -25,7 +25,7 @@ const App = ({ appController }) => {
         //},
         {
             path: '/addBook',
-           element: <AddBook />
+            element: <AddBook appController={appController} />
         },
         {
             path: '/fetch-data',

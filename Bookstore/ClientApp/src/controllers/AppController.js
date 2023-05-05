@@ -22,8 +22,8 @@ export class AppController {
     return await this.bookController.buyBook(id);
   }
 
-  async addBook(id) {
-    return await this.bookController.addBook(id);
+  async addBook(book) {
+    return await this.bookController.addNewBook(book);
   }
 
   async deleteBook(id) {
